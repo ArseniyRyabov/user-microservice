@@ -2,7 +2,7 @@
 
 
 --changeset arseniyryabov:user_id_sequence
-CREATE SEQUENCE user_id_sequence
+CREATE SEQUENCE IF NOT EXISTS user_id_sequence
 START WITH 1
 INCREMENT BY 1;
 
