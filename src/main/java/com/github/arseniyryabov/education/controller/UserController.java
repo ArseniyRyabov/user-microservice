@@ -24,10 +24,9 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getById(@PathVariable Long id) {
+    public UserResponse getById(@PathVariable Long id) {
         UserEntity userEntity = usersService.getById(id);
-        UserResponse userResponse = new UserResponse(userEntity.getId(), userEntity.getUserName(), userEntity.getLastName(), userEntity.getSecondName());
-        return ResponseEntity.ok(userResponse);
+        return new UserResponse(userEntity.getId(), userEntity.getUserName(), userEntity.getLastName(), userEntity.getSecondName());
     }
 
     @PostMapping
