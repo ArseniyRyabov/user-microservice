@@ -1,11 +1,11 @@
-package com.github.arseniyryabov.education.controller;
+package com.github.arseniyryabov.user.controller;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.github.arseniyryabov.education.entity.UserEntity;
-import com.github.arseniyryabov.education.service.UsersService;
+import com.github.arseniyryabov.user.entity.UserEntity;
+import com.github.arseniyryabov.user.service.UsersService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import com.github.arseniyryabov.education.controller.model.UserCreatingRequest;
+import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
 
 import java.util.Arrays;
 import java.util.List;

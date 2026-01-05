@@ -10,12 +10,18 @@ description = ''
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
 repositories {
     mavenCentral()
+}
+
+bootJar {
+    mainClass = 'com.github.arseniyryabov.user.UserApplication'
+    archiveBaseName = 'app'
+    archiveVersion = ''
 }
 
 dependencies {

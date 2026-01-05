@@ -1,4 +1,4 @@
-package com.github.arseniyryabov.education.exceptions;
+package com.github.arseniyryabov.user.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

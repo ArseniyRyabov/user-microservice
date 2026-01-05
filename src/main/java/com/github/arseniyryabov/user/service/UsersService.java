@@ -1,11 +1,11 @@
-package com.github.arseniyryabov.education.service;
+package com.github.arseniyryabov.user.service;
 
-import com.github.arseniyryabov.education.exceptions.UserNotFoundException;
-import com.github.arseniyryabov.education.repository.UserRepository;
+import com.github.arseniyryabov.user.exceptions.UserNotFoundException;
+import com.github.arseniyryabov.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.github.arseniyryabov.education.entity.UserEntity;
-import com.github.arseniyryabov.education.controller.model.UserCreatingRequest;
+import com.github.arseniyryabov.user.entity.UserEntity;
+import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
 
 import java.util.List;
 
