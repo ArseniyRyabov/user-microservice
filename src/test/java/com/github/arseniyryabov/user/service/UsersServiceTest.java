@@ -1,10 +1,9 @@
-package com.github.arseniyryabov.education.service;
+package com.github.arseniyryabov.user.service;
 
-import com.github.arseniyryabov.education.controller.model.UserCreatingRequest;
-import com.github.arseniyryabov.education.controller.model.UserResponse;
-import com.github.arseniyryabov.education.entity.UserEntity;
-import com.github.arseniyryabov.education.exceptions.UserNotFoundException;
-import com.github.arseniyryabov.education.repository.UserRepository;
+import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
+import com.github.arseniyryabov.user.entity.UserEntity;
+import com.github.arseniyryabov.user.exceptions.UserNotFoundException;
+import com.github.arseniyryabov.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

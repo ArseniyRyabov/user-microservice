@@ -1,6 +1,6 @@
-package com.github.arseniyryabov.education.repository;
+package com.github.arseniyryabov.user.repository;
 
-import com.github.arseniyryabov.education.entity.UserEntity;
+import com.github.arseniyryabov.user.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
