@@ -2,7 +2,7 @@ package com.github.arseniyryabov.user.service;
 
 import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
 import com.github.arseniyryabov.user.entity.UserEntity;
-import com.github.arseniyryabov.user.exceptions.UserNotFoundException;
+import com.github.arseniyryabov.user.exception.UserNotFoundException;
 import com.github.arseniyryabov.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

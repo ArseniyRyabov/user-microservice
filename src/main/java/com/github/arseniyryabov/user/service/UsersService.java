@@ -1,6 +1,6 @@
 package com.github.arseniyryabov.user.service;
 
-import com.github.arseniyryabov.user.exceptions.UserNotFoundException;
+import com.github.arseniyryabov.user.exception.UserNotFoundException;
 import com.github.arseniyryabov.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class UsersService {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -26,7 +27,7 @@ public class UsersService {
     public UserEntity getById(Long id) {
         return userRepository
                 .findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Пользователь с ID " + id + " не найден"));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     public List<UserEntity> getByFiltersWithPagination(String lastName, int limit, int offset) {
