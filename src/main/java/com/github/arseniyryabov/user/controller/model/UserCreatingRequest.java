@@ -1,4 +1,4 @@
-package com.github.arseniyryabov.education.controller.model;
+package com.github.arseniyryabov.user.controller.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
