@@ -1,14 +1,14 @@
-package com.github.arseniyryabov.education.controller;
+package com.github.arseniyryabov.user.controller;
 
-import com.github.arseniyryabov.education.controller.model.UserCreatingRequest;
-import com.github.arseniyryabov.education.entity.UserEntity;
-import com.github.arseniyryabov.education.service.UsersService;
+import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
+import com.github.arseniyryabov.user.entity.UserEntity;
+import com.github.arseniyryabov.user.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.github.arseniyryabov.education.controller.model.UserResponse;
-import com.github.arseniyryabov.education.repository.UserRepository;
+import com.github.arseniyryabov.user.controller.model.UserResponse;
+import com.github.arseniyryabov.user.repository.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,10 +24,9 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getById(@PathVariable Long id) {
+    public UserResponse getById(@PathVariable Long id) {
         UserEntity userEntity = usersService.getById(id);
-        UserResponse userResponse = new UserResponse(userEntity.getId(), userEntity.getUserName(), userEntity.getLastName(), userEntity.getSecondName());
-        return ResponseEntity.ok(userResponse);
+        return new UserResponse(userEntity.getId(), userEntity.getUserName(), userEntity.getLastName(), userEntity.getSecondName());
     }
 
     @PostMapping

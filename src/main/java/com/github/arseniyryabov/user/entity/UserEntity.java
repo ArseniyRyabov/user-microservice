@@ -1,4 +1,4 @@
-package com.github.arseniyryabov.education.entity;
+package com.github.arseniyryabov.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
