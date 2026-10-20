@@ -17,12 +17,12 @@ public class UserEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 250)
     private String lastName;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", length = 250)
     private String userName;
 
-    @Column(name = "second_name")
+    @Column(name = "second_name", length = 250)
     private String secondName;
 }
