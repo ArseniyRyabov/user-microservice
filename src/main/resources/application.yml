@@ -30,7 +30,8 @@ spring:
       properties:
         spring.json.trusted.packages: "com.github.arseniyryabov.order.event"
         spring.json.value.default.type: "com.github.arseniyryabov.order.event.OrderCreatedEvent"
-    # когда user-service будет ОТПРАВЛЯТЬ события — раскомментировать:
-    # producer:
-    #   key-serializer: org.apache.kafka.common.serialization.StringSerializer
-    #   value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    producer:                                    # ← НОВОЕ
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
