@@ -1,4 +1,5 @@
 server:
+  address: "::"
   port: 8080
 
 spring:

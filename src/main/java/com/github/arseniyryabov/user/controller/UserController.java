@@ -2,8 +2,8 @@ package com.github.arseniyryabov.user.controller;
 
 import com.github.arseniyryabov.user.controller.model.UserCreatingRequest;
 import com.github.arseniyryabov.user.controller.model.UserResponse;
-import com.github.arseniyryabov.user.entity.UserEntity;
 import com.github.arseniyryabov.user.service.UsersService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -24,11 +24,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserResponse getById(@PathVariable Long id) {
-        return toResponse(usersService.getById(id));
+        return usersService.getById(id);
     }
 
     @PostMapping
-    public ResponseEntity<Long> create(@RequestBody UserCreatingRequest request) {
+    public ResponseEntity<Long> create(@Valid @RequestBody UserCreatingRequest request) {
         Long userId = usersService.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(userId);
     }
@@ -40,11 +40,6 @@ public class UserController {
             @RequestParam(defaultValue = "10") int size) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").ascending());
-        Page<UserEntity> users = usersService.getByFiltersWithPagination(lastName, pageable);
-        return users.map(this::toResponse);
-    }
-
-    private UserResponse toResponse(UserEntity user) {
-        return new UserResponse(user.getId(), user.getUserName(), user.getLastName(), user.getSecondName());
+        return usersService.getByFiltersWithPagination(lastName, pageable);
     }
 }
