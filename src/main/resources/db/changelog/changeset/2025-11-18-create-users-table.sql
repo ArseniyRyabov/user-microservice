@@ -13,3 +13,7 @@ CREATE TABLE users (
     last_name VARCHAR(250) NOT NULL,
     second_name VARCHAR(250) NOT NULL
 );
+
+--changeset arseniyryabov:alter-user-id-to-bigint
+ALTER SEQUENCE user_id_sequence AS BIGINT;
+ALTER TABLE users ALTER COLUMN id TYPE BIGINT;
