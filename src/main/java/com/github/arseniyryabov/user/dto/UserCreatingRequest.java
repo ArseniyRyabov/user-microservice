@@ -1,4 +1,4 @@
-package com.github.arseniyryabov.user.controller.model;
+package com.github.arseniyryabov.user.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
