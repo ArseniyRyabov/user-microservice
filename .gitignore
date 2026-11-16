@@ -1,11 +1,12 @@
+### Build & Gradle ###
 HELP.md
-.gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### STS ###
+### STS (Eclipse) ###
 .apt_generated
 .classpath
 .factorypath
@@ -18,7 +19,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -34,4 +35,31 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.idea/
+.vscode/
+
+### Local configs & secrets ###
+.env
+.env.*
+*.env
+*.local.yml
+*.local.yaml
+*.local.properties
+application-local.yml
+application-local.yaml
+application-local.properties
+application-*-local.yml
+application-*-local.yaml
+application-*-local.properties
+
+### Logs ###
+*.log
+logs/
+*.log.*
+
+### OS ###
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini

@@ -1,16 +1,61 @@
 server:
   port: 8080
+  tomcat:
+    accesslog:
+      max-days: 30
+      rotate: true    # default, но явно
+      enabled: true
+      # %D в Tomcat 10.1.44 выдаёт микросекунды, не миллисекунды.
+      # 734298 = 0.734 сек. Учтено при парсинге логов.
+      pattern: '%h %t "%r" %s %b %D'
+      # directory: /var/log/user-service для прода
+      directory: C:/programming/projects/java/user-microservice/logs
+      prefix: access
+      # buffered: true для прода
+      buffered: false
 
 spring:
+  application:
+    name: user-service
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/user
-    username: postgres
-    password: postgres
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/user}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20   # default 10
+      minimum-idle: 5
+
   jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
     properties:
-      hibernate:
-        ddl-auto: none
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-  liquibase:
-    enabled: true
+      hibernate.jdbc.time_zone: UTC
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: user-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: "com.github.arseniyryabov.user.event.OrderCreatedEvent"
+        spring.json.trusted.packages: "com.github.arseniyryabov.user.event"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+
+logging:
+  level:
+    # Конфиг-дампы клиентов — самый шумный источник (по ~80 строк на клиент)
+    org.apache.kafka.clients.admin.AdminClientConfig: WARN
+    org.apache.kafka.clients.consumer.ConsumerConfig: WARN
+    org.apache.kafka.clients.producer.ProducerConfig: WARN
+    # Остальное — INFO (ребалансы, join group, metadata)
+    org.apache.kafka: INFO
